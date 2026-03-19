@@ -11,6 +11,7 @@ public class Atleta {
 
     // Nuevo atributo
     private double imc;
+    private double promHorasEntrenamiento;
 
     // Construct vacio
     public Atleta(){}
@@ -58,6 +59,12 @@ public class Atleta {
     public void setAltura(double altura) {
         this.altura = altura;
     }
+    public double getPromHorasEntrenamiento() {
+        return promHorasEntrenamiento;
+    }
+    public void setPromHorasEntrenamiento(double promHorasEntrenamiento) {
+        this.promHorasEntrenamiento = promHorasEntrenamiento;
+    }
 
     public double getHorasEntrenamientodiarias() {
         return horasEntrenamientodiarias;
@@ -98,13 +105,13 @@ public class Atleta {
     }
 
     public void clasificarRendimiento(){
-        if (horasEntrenamientodiarias < 5){
+        if (promHorasEntrenamiento < 5){
             System.out.println("Poco entrenamiento");
-        } else if (horasEntrenamientodiarias >= 5 &&  horasEntrenamientodiarias<= 9) {
+        } else if (promHorasEntrenamiento >= 5 &&  promHorasEntrenamiento<= 9) {
             System.out.println("Nivel intermedio");
-        }else if(horasEntrenamientodiarias >= 10 && horasEntrenamientodiarias<= 14){
+        }else if(promHorasEntrenamiento >= 10 && promHorasEntrenamiento<= 14){
             System.out.println("Buen nivel");
-        } else if (horasEntrenamientodiarias >= 15) {
+        } else if (promHorasEntrenamiento >= 15) {
             System.out.println("Alto rendimiento");
         }
     }

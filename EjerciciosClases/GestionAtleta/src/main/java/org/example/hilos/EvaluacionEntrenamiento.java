@@ -8,7 +8,7 @@ public class EvaluacionEntrenamiento {
 
     // Constructor
 
-    //Sobre escribir el metodo run()
+    //Sobreescribir el metodo run()
 
     // Imprimir nombre del entrenador y el atleta que esta evaluando
 

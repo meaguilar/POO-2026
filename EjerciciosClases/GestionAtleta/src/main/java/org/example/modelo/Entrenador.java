@@ -108,5 +108,12 @@ public class Entrenador implements Pagable, Imprimible {
         return gestor.guardarReportes(reporte);
     }
 
+    // Obtener los atletas por nombre de la lista asignados
+    public Atleta obtenerAtletaPorNombre(Atleta atleta) {
+
+
+        return atleta;
+    }
+
 
 }

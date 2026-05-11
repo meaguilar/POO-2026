@@ -1,6 +1,5 @@
 package org.example;
 
-
 import org.example.modelo.Nadador;
 import org.example.ui.DatosQuemados;
 import org.example.ui.EntradaDatosAtleta;

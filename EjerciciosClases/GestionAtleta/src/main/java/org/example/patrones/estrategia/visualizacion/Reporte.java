@@ -7,13 +7,20 @@ public class Reporte {
     private String asunto;
     private LocalDate fecha;
     private EstrategiaVisualizacion estrategia;
+    // crear nuevo atributo con tipo de dato StringBuilder
+    private StringBuilder firma;
 
 
     public Reporte() {
+        firma = new StringBuilder();
     }
-    public Reporte(String asunto, LocalDate fecha) {
+
+    // modificacion en el constructor
+    public Reporte(String asunto, LocalDate fecha, EstrategiaVisualizacion estrategia, StringBuilder firma) {
         this.asunto = asunto;
         this.fecha = fecha;
+        this.estrategia = estrategia;
+        this.firma = firma;
     }
 
     public String getAsunto() {
@@ -28,7 +35,18 @@ public class Reporte {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+    public void setEstrategia(EstrategiaVisualizacion estrategia) {
+        this.estrategia = estrategia;
+    }
 
+    public StringBuilder getFirma() {
+        return firma;
+    }
+    public void setFirma(StringBuilder firma) {
+        this.firma = firma;
+    }
+
+    // metodos
     public void visualizar(){
         if (estrategia == null) {
             System.out.println("No se encontro estrategia");
@@ -36,8 +54,9 @@ public class Reporte {
         estrategia.visualizar(this);
     }
 
-    public void setEstrategia(EstrategiaVisualizacion estrategia) {
-        this.estrategia = estrategia;
+    // implementación de sincronización
+    public synchronized void firmarReporte(String firma) {
+        this.firma.append(firma);
     }
 
 }

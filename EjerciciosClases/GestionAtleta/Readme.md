@@ -55,8 +55,21 @@ Se aplica el patrón de diseño **Strategy**, ampliando el diagrama de clases de
 - Se implementan dos estrategias concretas:
   - `VisualizacionCompleta`
   - `VisualizacionSimple`
-
 Este diseño permite cambiar dinámicamente la forma en que se visualizan los reportes, promoviendo flexibilidad y reutilización del código.
+ 
+## 📌 Parte VI
+Se implementan tareas con la interfaz Runnable para ser ejecutadas por hilos. En el diagrama de clases se agregan:
+-La clase EvaluacionEntrenamiento, relacionada con Entrenador, Atleta, Reporte y GestorReporte.
+-La clase EntrenamientoAtleta, relacionada con Atleta.
+Esto permite simular el entrenamiento y evaluación simultánea de varios atletas por diferentes entrenadores. Además, se aplica sincronización para asegurar la integridad de los reportes compartidos.
+
+## 📌 Parte VII
+Se implementa la interfaz gráfica utilizando JavaFX, incorporando ventanas, controles y componentes visuales que permiten la interacción del usuario con el sistema de manera intuitiva y dinámica.
+
+## 📌 Parte VIII
+Se implementa la persistencia en base de datos utilizando JDBC y el patrón DAO, por lo que el diagrama de clases se modifica nuevamente incorporando:
+-Clases e interfaces encargadas de separar la lógica de acceso a datos de la lógica de negocio, asociadas a las clases correspondientes.
+El uso de JDBC y el patrón DAO brinda mayor flexibilidad y mantenibilidad, ya que permite cambiar el tipo de persistencia o el motor de base de datos sin afectar la lógica de negocio existente.
 
 
 

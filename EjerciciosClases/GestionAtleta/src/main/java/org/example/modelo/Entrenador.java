@@ -44,6 +44,12 @@ public class Entrenador implements Pagable, Imprimible {
     public void setAtletasAsignados(List<Atleta> atletasAsignados) {
         this.atletasAsignados = atletasAsignados;
     }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     @Override
     public double calcularSalario(){
@@ -110,10 +116,11 @@ public class Entrenador implements Pagable, Imprimible {
 
     // Obtener los atletas por nombre de la lista asignados
     public Atleta obtenerAtletaPorNombre(Atleta atleta) {
-
-
-        return atleta;
+        for (var a : atletasAsignados) {
+            if (a.getNombre().equals(atleta.getNombre())) {
+                return a;
+            }
+        }
+        return null;
     }
-
-
 }

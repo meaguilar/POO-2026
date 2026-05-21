@@ -26,8 +26,8 @@ public class GestorReporte {
         this.reportes = reportes;
     }
 
-    // Metodos
-    public boolean guardarReportes(Reporte reporte) {
+    // Implementación de sincronozación
+    public synchronized boolean guardarReportes(Reporte reporte) {
         //return this.reportes.add(reporte);
         if (reporte == null) {
             return false;

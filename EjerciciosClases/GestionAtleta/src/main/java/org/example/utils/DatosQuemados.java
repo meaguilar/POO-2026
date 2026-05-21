@@ -82,6 +82,9 @@ public class DatosQuemados {
         // preescribir plan de entrenamiento al atleta
         entrenador1.preescribirPlan(nadador1, plan1);
 
+        entrenador1.preescribirPlan(nadador2, plan1);
+
+
         // Imprimiendo el plan de entrenamiento asignado a un atleta
         System.out.println("\nPlan de entrenamiento actual del atleta: " + nadador1.getNombre());
         nadador1.getPlanActual().imprimir();
@@ -117,21 +120,39 @@ public class DatosQuemados {
         reporteEvaluacion.setAsunto("Evaluación deportiva  \n");
         entrenador1.enviarReporte(gestorReporte1, reporteEvaluacion);
 
+
         // Crear tareas concurrentes y en paralelo
-        Thread hiloEntrenamiento = new Thread(new EntrenamientoAtleta(nadador1));
-        Thread hiloEvaluacionEntrenador1 = new Thread(new EvaluacionEntrenamiento(nadador1, entrenador1, gestorReporte1, reporteEvaluacion));
-        Thread hiloEvaluacionEntrenador2 = new Thread(new EvaluacionEntrenamiento(nadador1, entrenador2, gestorReporte1, reporteEvaluacion));
+        EntrenamientoAtleta tareaEntrenamiento1 = new EntrenamientoAtleta(nadador1);
+        EntrenamientoAtleta tareaEntrenamiento2 = new EntrenamientoAtleta(nadador2);
+
+        // Dos tarea de evaluacion asignadas a un entrenador diferente para el mismo atleta
+        EvaluacionEntrenamiento tareaEvaluacion1 = new EvaluacionEntrenamiento(nadador1, entrenador1, gestorReporte1, reporteEvaluacion);
+        EvaluacionEntrenamiento tareaEvaluacion2 = new EvaluacionEntrenamiento(nadador1, entrenador2, gestorReporte1, reporteEvaluacion);
+
+        // Una tarea de evaluacion asignada a entrenador 2 de un atleta que no esta en la lista de este
+        EvaluacionEntrenamiento tareaEvaluacion3 = new EvaluacionEntrenamiento(nadador2, entrenador2, gestorReporte1, reporteEvaluacion);
+
+        // Crear los hilos que implementn las tareas de entreno  y evaluacion
+        Thread hiloEntrenamiento1 = new Thread(tareaEntrenamiento1);
+        Thread hiloEntrenamiento2 = new Thread(tareaEntrenamiento2);
+        Thread hiloEvaluacion1 = new Thread(tareaEvaluacion1);
+        Thread hiloEvaluacion2 = new Thread(tareaEvaluacion2);
+        Thread hiloEvaluacion3 = new Thread(tareaEvaluacion3);
 
         // Ejecutar los hilos
-        hiloEntrenamiento.start();
-        hiloEvaluacionEntrenador1.start();
-        hiloEvaluacionEntrenador2.start();
+        hiloEntrenamiento1.start();
+        hiloEntrenamiento2.start();
+        hiloEvaluacion1.start();
+        hiloEvaluacion2.start();
+        hiloEvaluacion3.start();
 
         try {
             // Controlar la ejecución de los hilos
-            hiloEntrenamiento.join();
-            hiloEvaluacionEntrenador1.join();
-            hiloEvaluacionEntrenador2.join();
+            hiloEntrenamiento1.join();
+            hiloEntrenamiento2.join();
+            hiloEvaluacion1.join();
+            hiloEvaluacion2.join();
+            hiloEvaluacion3.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

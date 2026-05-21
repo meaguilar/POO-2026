@@ -1,4 +1,4 @@
-package org.example.ui;
+package org.example.utils;
 
 import org.example.catalogo.Deporte;
 import org.example.hilos.EntrenamientoAtleta;
@@ -138,7 +138,7 @@ public class DatosQuemados {
 
         reporteEvaluacion.firmarReporte("Reporte oficial autorizado. F:[Gimnasio UCA]");
 
-        // Imprimir los reportes del entrenador 1 con la estrategia de reporte completo
+        // Imprimir el reporte de evaluación con la estrategia de reporte completo
         System.out.println("\nListado de reportes ");
         reporteEvaluacion.setEstrategia(estrategiaReporteCompleto);
         reporteEvaluacion.visualizar();

@@ -1,6 +1,8 @@
 package org.example.ui;
 
 import org.example.catalogo.Deporte;
+import org.example.hilos.EntrenamientoAtleta;
+import org.example.hilos.EvaluacionEntrenamiento;
 import org.example.modelo.*;
 import org.example.modelo.GestorReporte;
 import org.example.patrones.estrategia.visualizacion.EstrategiaVisualizacion;
@@ -51,6 +53,7 @@ public class DatosQuemados {
 
         // Crear al entrenador
         Entrenador entrenador1 = new Entrenador("Julio", 4);
+        Entrenador entrenador2 = new Entrenador("Roxana", 5);
 
         System.out.println("\nDatos del entrenador: ");
         System.out.println("Salario del entrenador $: " + entrenador1.calcularSalario());
@@ -58,6 +61,7 @@ public class DatosQuemados {
         // Agregar atletas al entrenador
         entrenador1.agregarAtleta(nadador1);
         entrenador1.agregarAtleta(nadador2);
+        entrenador2.agregarAtleta(nadador1);
 
         entrenador1.imprimir();
 
@@ -70,7 +74,9 @@ public class DatosQuemados {
         System.out.println("\nObjetivo generado para plan de entrenamiento: " + objetivoGenerado + " - Atleta: " + nadador1.getNombre());
 
         // Agregar ejercicios al plan despues de conocer el objetivo
-        plan1.agregarEjerciciosDuracion("Bicicleta", 10.0);
+        plan1.agregarEjerciciosDuracion("Bicicleta", 0.3);
+        plan1.agregarEjerciciosDuracion("Flexiones", 0.4);
+        plan1.agregarEjerciciosDuracion("Sentadillas", 0.4);
         plan1.imprimir();
 
         // preescribir plan de entrenamiento al atleta
@@ -103,6 +109,39 @@ public class DatosQuemados {
             System.out.println("Asunto " + reporte.getAsunto());
             System.out.println("Fecha " + reporte.getFecha());
         }
+
+
+        // CREAR EL REPORTE DE LA EVALUACION -- gestor asociado gestor1
+        Reporte reporteEvaluacion = new Reporte();
+        reporteEvaluacion.setFecha(LocalDate.now());
+        reporteEvaluacion.setAsunto("Evaluación deportiva  \n");
+        entrenador1.enviarReporte(gestorReporte1, reporteEvaluacion);
+
+        // Crear tareas concurrentes y en paralelo
+        Thread hiloEntrenamiento = new Thread(new EntrenamientoAtleta(nadador1));
+        Thread hiloEvaluacionEntrenador1 = new Thread(new EvaluacionEntrenamiento(nadador1, entrenador1, gestorReporte1, reporteEvaluacion));
+        Thread hiloEvaluacionEntrenador2 = new Thread(new EvaluacionEntrenamiento(nadador1, entrenador2, gestorReporte1, reporteEvaluacion));
+
+        // Ejecutar los hilos
+        hiloEntrenamiento.start();
+        hiloEvaluacionEntrenador1.start();
+        hiloEvaluacionEntrenador2.start();
+
+        try {
+            // Controlar la ejecución de los hilos
+            hiloEntrenamiento.join();
+            hiloEvaluacionEntrenador1.join();
+            hiloEvaluacionEntrenador2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        reporteEvaluacion.firmarReporte("Reporte oficial autorizado. F:[Gimnasio UCA]");
+
+        // Imprimir los reportes del entrenador 1 con la estrategia de reporte completo
+        System.out.println("\nListado de reportes ");
+        reporteEvaluacion.setEstrategia(estrategiaReporteCompleto);
+        reporteEvaluacion.visualizar();
 
     }
 }

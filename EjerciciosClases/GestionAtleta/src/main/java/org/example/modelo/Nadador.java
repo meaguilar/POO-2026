@@ -29,12 +29,7 @@ public class Nadador extends Atleta {
 
     @Override
     public void entrenar(){
-
-        // Asociar el plan de entrenamiento
-
-        // Imprimir los ejercicios del planActual
-
-        System.out.println("El entrenamiento es en la piscina olimpica de la UES");
+        System.out.println("El entrenamiento es el en Gimnasio UCA");
     }
 
     @Override

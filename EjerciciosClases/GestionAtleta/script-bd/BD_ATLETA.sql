@@ -1,0 +1,140 @@
+-- BASE DE DATOS
+CREATE DATABASE BD_ATLETAS;
+GO
+
+USE BD_ATLETAS;
+GO
+
+-- TABLA DEPORTE
+CREATE TABLE DEPORTE (
+    id_deporte INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+GO
+
+-- TABLA ENTRENADOR
+CREATE TABLE ENTRENADOR (
+    id_entrenador INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(100),
+    experiencia INT,
+    salario FLOAT
+);
+GO
+
+-- TABLA ATLETA (PADRE)
+CREATE TABLE ATLETA (
+    id_atleta INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(100),
+    edad INT,
+    peso FLOAT,
+    altura FLOAT,
+    horas_entrenamiento_diarias FLOAT,
+
+    id_deporte INT,
+    id_entrenador INT,
+
+    FOREIGN KEY (id_deporte) REFERENCES DEPORTE(id_deporte),
+    FOREIGN KEY (id_entrenador) REFERENCES ENTRENADOR(id_entrenador)
+);
+GO
+
+
+-- TABLA NADADOR
+CREATE TABLE NADADOR (
+    id_atleta INT PRIMARY KEY,
+    estilo VARCHAR(50),
+
+    FOREIGN KEY (id_atleta) REFERENCES ATLETA(id_atleta)
+);
+GO
+
+
+-- TABLA EQUIPO
+CREATE TABLE EQUIPO (
+    id_equipo INT IDENTITY(1,1) PRIMARY KEY,
+    nombre_equipo VARCHAR(100)
+);
+GO
+
+
+-- TABLA PLAN_ENTRENAMIENTO
+CREATE TABLE PLAN_ENTRENAMIENTO (
+    id_plan INT IDENTITY(1,1) PRIMARY KEY,
+    objetivo VARCHAR(255)
+);
+GO
+
+
+-- TABLA EJERCICIO
+CREATE TABLE EJERCICIO (
+    id_ejercicio INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(100),
+    duracion FLOAT,
+    id_plan INT,
+
+    FOREIGN KEY (id_plan) REFERENCES PLAN_ENTRENAMIENTO(id_plan)
+);
+GO
+
+-- TABLA REPORTE
+CREATE TABLE REPORTE (
+    id_reporte INT IDENTITY(1,1) PRIMARY KEY,
+    asunto VARCHAR(255),
+    fecha DATE
+);
+GO
+
+-- RELACIÓN EQUIPO - ATLETA
+CREATE TABLE EQUIPO_ATLETA (
+    id_equipo INT,
+    id_atleta INT,
+
+    PRIMARY KEY (id_equipo, id_atleta),
+
+    FOREIGN KEY (id_equipo) REFERENCES EQUIPO(id_equipo),
+    FOREIGN KEY (id_atleta) REFERENCES ATLETA(id_atleta)
+);
+GO
+
+-- RELACIÓN ENTRENADOR - PLAN
+CREATE TABLE ENTRENADOR_PLAN (
+    id_entrenador INT,
+    id_plan INT,
+
+    PRIMARY KEY (id_entrenador, id_plan),
+
+    FOREIGN KEY (id_entrenador) REFERENCES ENTRENADOR(id_entrenador),
+    FOREIGN KEY (id_plan) REFERENCES PLAN_ENTRENAMIENTO(id_plan)
+);
+GO
+
+-- RELACIÓN ENTRENADOR - REPORTE
+CREATE TABLE ENTRENADOR_REPORTE (
+    id_entrenador INT,
+    id_reporte INT,
+
+    PRIMARY KEY (id_entrenador, id_reporte),
+
+    FOREIGN KEY (id_entrenador) REFERENCES ENTRENADOR(id_entrenador),
+    FOREIGN KEY (id_reporte) REFERENCES REPORTE(id_reporte)
+);
+GO
+
+-- DATOS INICIALES CATALOGO (TIPO_GALERIA)
+INSERT INTO DEPORTE(nombre) VALUES
+('NATACION'),
+('VOLLEYBALL'),
+('FUTBOL'),
+('TENIS');
+GO
+
+-- MODIFICAR EL TIPO DE DATO PARA GUARDAR TODOS LOS VALORES DEL ARREGLO - APLICA PARA SQLSERVER
+ALTER TABLE ATLETA ALTER COLUMN horas_entrenamiento_diarias VARCHAR(100);
+
+
+-- REVISION DEL CAMBIO DEL TIPO DE DATO EN SQLSERVER
+SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'ATLETA' AND COLUMN_NAME = 'horas_entrenamiento_diarias';
+
+

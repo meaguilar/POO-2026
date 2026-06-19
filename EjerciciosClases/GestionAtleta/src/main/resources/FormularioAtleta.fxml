@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.mfxcore.controls.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1440.0"
+            prefHeight="900.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.controlador.registroAtletaControlador"
+            fx:id="root">
+
+    <center>
+
+        <VBox spacing="30"
+              maxWidth="650"
+              maxHeight="-Infinity"
+              styleClass="card"
+              BorderPane.alignment="CENTER">
+
+            <padding>
+                <Insets top="40" right="50" bottom="20" left="50"/>
+            </padding>
+
+            <HBox alignment="CENTER">
+                <Label text="Registro - Atleta"
+                       styleClass="titulo"/>
+            </HBox>
+
+            <GridPane fx:id="gridForm" hgap="20" vgap="18" maxWidth="Infinity">
+
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                    <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Nombre -->
+                <Label text="Nombre completo"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="0"
+                />
+                <MFXTextField fx:id="txtNombre"
+                              floatingText="Ejemplo: Marlene Navarro"
+                              GridPane.rowIndex="1"
+                              GridPane.columnIndex="0"
+                              GridPane.columnSpan="2"
+                              maxWidth="Infinity"/>
+
+                <!-- Peso / Altura -->
+                <Label text="Peso (Kgs.)"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="0"
+                />
+                <MFXTextField fx:id="txtPeso"
+                              floatingText="Ejemplo: 45"
+                              GridPane.rowIndex="3"
+                              GridPane.columnIndex="0"
+                              maxWidth="Infinity"/>
+                <Label text="Altura (mts.)"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="1"
+                />
+                <MFXTextField fx:id="txtAltura"
+                              floatingText="Ejemplo: 1.70"
+                              GridPane.rowIndex="3"
+                              GridPane.columnIndex="1"
+                              maxWidth="Infinity"/>
+
+                <!-- Fecha -->
+                <Label text="Fecha de nacimiento"
+                       GridPane.rowIndex="4"
+                       GridPane.columnIndex="0"
+                />
+                <MFXDatePicker fx:id="dpFechaNacimiento"
+                               GridPane.rowIndex="5"
+                               GridPane.columnIndex="0"
+                               GridPane.columnSpan="2"
+                               maxWidth="Infinity"/>
+
+                <!-- Deporte -->
+                <MFXComboBox fx:id="cbDeporte"
+                             floatingText="Deporte"
+                             GridPane.rowIndex="6"
+                             GridPane.columnIndex="0"
+                             GridPane.columnSpan="2"
+                             maxWidth="Infinity"/>
+
+                <!-- Horas -->
+                <Label text="Horas de entrenamiento diarias"
+                       GridPane.rowIndex="8"
+                       GridPane.columnIndex="0"
+                />
+                <HBox GridPane.columnIndex="0"
+                      GridPane.rowIndex="9"
+                      GridPane.columnSpan="2"
+                      maxWidth="Infinity"
+                      alignment="CENTER"
+                      spacing="10">
+
+                    <MFXTextField fx:id="txtHoraLunes" floatingText="L" maxWidth="Infinity"/>
+                    <MFXTextField fx:id="txtHoraMartes" floatingText="M" maxWidth="Infinity"/>
+                    <MFXTextField fx:id="txtHoraMiercoles" floatingText="M" maxWidth="Infinity"/>
+                    <MFXTextField fx:id="txtHoraJueves" floatingText="J" maxWidth="Infinity"/>
+                    <MFXTextField fx:id="txtHoraViernes" floatingText="V" maxWidth="Infinity"/>
+                    <MFXTextField fx:id="txtHoraSabado" floatingText="S" maxWidth="Infinity"/>
+                    <MFXTextField fx:id="txtHoraDomingo" floatingText="D" maxWidth="Infinity"/>
+                </HBox>
+
+            </GridPane>
+
+            <HBox alignment="CENTER">
+                <MFXButton fx:id="btnRegistrar" onAction="#registrar"
+                           text="Registrarse"
+                           styleClass="btn-registrar"/>
+            </HBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

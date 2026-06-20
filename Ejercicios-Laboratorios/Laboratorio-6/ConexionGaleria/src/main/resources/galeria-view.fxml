@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<StackPane xmlns="http://javafx.com/javafx/26"
+<StackPane xmlns="http://javafx.com/javafx/21"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="controller.GaleriaController"
            stylesheets="@css/styles.css"
@@ -91,7 +91,7 @@
     <StackPane fx:id="overlayBackdrop"
                styleClass="modal-backdrop"
                visible="false" managed="false"
-               onMouseClicked="#manejarCerrarModal">
+               onMouseClicked="#manejarCerrarModalClick">
 
         <!-- ─── MODAL AGREGAR ─────────────── -->
         <VBox fx:id="panelAgregar"

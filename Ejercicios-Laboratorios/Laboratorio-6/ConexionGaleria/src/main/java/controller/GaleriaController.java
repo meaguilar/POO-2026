@@ -248,6 +248,12 @@ public class GaleriaController {
         cerrarTodosLosModales();
     }
 
+    /** Variante para el onMouseClicked del backdrop (recibe MouseEvent). */
+    @FXML
+    private void manejarCerrarModalClick(MouseEvent e) {
+        cerrarTodosLosModales();
+    }
+
     /**
      * consume() evita que los clics dentro del modal lleguen al backdrop
      * y lo cierren por accidente.

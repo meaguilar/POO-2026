@@ -1,0 +1,493 @@
+/* ══════════════════════════════════════════
+   ESTILOS ORIGINALES
+══════════════════════════════════════════ */
+.app-root {
+    -fx-background-color: linear-gradient(to bottom right, #f7f8fc, #edf2f7);
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.hero-pane {
+    -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e3a5f);
+}
+
+.surface-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 18;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.35), 32, 0.25, 0, 10);
+}
+
+.title-label {
+    -fx-text-fill: #102033;
+    -fx-font-size: 32px;
+    -fx-font-weight: 700;
+}
+
+.gallery-title {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 38px;
+    -fx-font-weight: 700;
+    -fx-letter-spacing: 0.3px;
+}
+
+.field-input {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 14;
+    -fx-border-color: #d5dce6;
+    -fx-border-radius: 14;
+    -fx-border-width: 1.2;
+    -fx-padding: 0 14 0 14;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #7b8794;
+}
+
+.field-input:focused {
+    -fx-border-color: #2563eb;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.14), 14, 0.18, 0, 0);
+}
+
+.primary-button {
+    -fx-background-color: linear-gradient(to right, #2563eb, #1d4ed8);
+    -fx-background-radius: 14;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+    -fx-padding: 0 18 0 18;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #1d4ed8, #1e40af);
+}
+
+.primary-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 14;
+    -fx-border-color: #c8d1dd;
+    -fx-border-radius: 14;
+    -fx-border-width: 1.2;
+    -fx-text-fill: #1f2937;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-padding: 0 18 0 18;
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(37, 99, 235, 0.08);
+    -fx-border-color: #2563eb;
+}
+
+.menu-button {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 12;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover     { -fx-background-color: #eef2f7; }
+.menu-button .label    { -fx-text-fill: #0f172a; }
+.menu-button .arrow    { -fx-background-color: #0f172a; }
+
+.top-bar {
+    -fx-background-color: linear-gradient(to right, #0f172a, #1e293b);
+}
+
+.gallery-scroll {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.gallery-scroll .viewport { -fx-background-color: transparent; }
+.gallery-grid              { -fx-background-color: transparent; }
+.gallery-grid .label       { -fx-text-fill: #1f2937; }
+
+.danger-button {
+    -fx-background-color: linear-gradient(to right, #dc2626, #b91c1c);
+    -fx-background-radius: 14;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+    -fx-padding: 0 18 0 18;
+}
+
+.danger-button:hover    { -fx-background-color: linear-gradient(to right, #b91c1c, #991b1b); }
+.danger-button:disabled { -fx-opacity: 0.5; }
+
+.text-label {
+    -fx-text-fill: #4b5563;
+    -fx-font-size: 13px;
+}
+
+.art-list {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 14;
+    -fx-border-color: #d5dce6;
+    -fx-border-radius: 14;
+    -fx-border-width: 1.2;
+}
+
+.art-list .list-cell          { -fx-padding: 8 14 8 14; -fx-font-size: 14px; }
+.art-list .list-cell:selected { -fx-background-color: #2563eb; -fx-text-fill: white; }
+
+/* ══════════════════════════════════════════
+   NUEVOS — solo para los modales overlay
+══════════════════════════════════════════ */
+
+/* Fondo oscuro semitransparente detrás del modal */
+/* ══════════════════════════════════════════
+   ESTILOS ORIGINALES (sin cambios)
+══════════════════════════════════════════ */
+.app-root {
+    -fx-background-color: linear-gradient(to bottom right, #f7f8fc, #edf2f7);
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.hero-pane {
+    -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e3a5f);
+}
+
+.surface-card {
+    -fx-background-color: rgba(255, 255, 255, 0.96);
+    -fx-background-radius: 26;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.18), 24, 0.18, 0, 8);
+}
+
+.title-label {
+    -fx-text-fill: #102033;
+    -fx-font-size: 32px;
+    -fx-font-weight: 700;
+}
+
+.gallery-title {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 38px;
+    -fx-font-weight: 700;
+    -fx-letter-spacing: 0.3px;
+}
+
+.field-input {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 14;
+    -fx-border-color: #d5dce6;
+    -fx-border-radius: 14;
+    -fx-border-width: 1.2;
+    -fx-padding: 0 14 0 14;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #7b8794;
+}
+
+.field-input:focused {
+    -fx-border-color: #2563eb;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.14), 14, 0.18, 0, 0);
+}
+
+.primary-button {
+    -fx-background-color: linear-gradient(to right, #2563eb, #1d4ed8);
+    -fx-background-radius: 14;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+    -fx-padding: 0 18 0 18;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #1d4ed8, #1e40af);
+}
+
+.primary-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 14;
+    -fx-border-color: #c8d1dd;
+    -fx-border-radius: 14;
+    -fx-border-width: 1.2;
+    -fx-text-fill: #1f2937;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-padding: 0 18 0 18;
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(37, 99, 235, 0.08);
+    -fx-border-color: #2563eb;
+}
+
+.menu-button {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 12;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover     { -fx-background-color: #eef2f7; }
+.menu-button .label    { -fx-text-fill: #0f172a; }
+.menu-button .arrow    { -fx-background-color: #0f172a; }
+
+.top-bar {
+    -fx-background-color: linear-gradient(to right, #0f172a, #1e293b);
+}
+
+.gallery-scroll {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.gallery-scroll .viewport { -fx-background-color: transparent; }
+.gallery-grid              { -fx-background-color: transparent; }
+.gallery-grid .label       { -fx-text-fill: #1f2937; }
+
+.danger-button {
+    -fx-background-color: linear-gradient(to right, #dc2626, #b91c1c);
+    -fx-background-radius: 14;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+    -fx-padding: 0 18 0 18;
+}
+
+.danger-button:hover    { -fx-background-color: linear-gradient(to right, #b91c1c, #991b1b); }
+.danger-button:disabled { -fx-opacity: 0.5; }
+
+.text-label {
+    -fx-text-fill: #4b5563;
+    -fx-font-size: 13px;
+}
+
+.art-list {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 14;
+    -fx-border-color: #d5dce6;
+    -fx-border-radius: 14;
+    -fx-border-width: 1.2;
+}
+
+.art-list .list-cell          { -fx-padding: 8 14 8 14; -fx-font-size: 14px; }
+.art-list .list-cell:selected { -fx-background-color: #2563eb; -fx-text-fill: white; }
+
+/* ══════════════════════════════════════════
+   NUEVOS — solo para los modales overlay
+══════════════════════════════════════════ */
+
+/* Fondo oscuro semitransparente detrás del modal */
+.modal-backdrop {
+    -fx-background-color: rgba(10, 15, 30, 0.55);
+}
+
+/* Etiquetas de campo dentro del modal */
+.field-label {
+    -fx-text-fill: #374151;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+/* Botón ✕ para cerrar el modal */
+.btn-close {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 50;
+    -fx-text-fill: #64748b;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-max-width: 30;
+    -fx-max-height: 30;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+
+.btn-close:hover {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #dc2626;
+}
+
+/* Panel de info del arte encontrado (modal Eliminar) */
+.info-panel {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 14;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+}
+
+/* ══════════════════════════════════════════
+   MODAL PANELS — fondo sólido, tamaño fijo
+══════════════════════════════════════════ */
+
+
+
+.modal-panel {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 18;
+    -fx-border-width: 1;
+    -fx-pref-width: 420;
+    -fx-max-width: 420;
+    -fx-effect: dropshadow(gaussian, rgba(10, 20, 50, 0.30), 32, 0.2, 0, 8);
+}
+
+.modal-panel-wide {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 18;
+    -fx-border-width: 1;
+    -fx-pref-width: 480;
+    -fx-max-width: 480;
+    -fx-effect: dropshadow(gaussian, rgba(10, 20, 50, 0.30), 32, 0.2, 0, 8);
+}
+/* Etiquetas de campo dentro del modal */
+.field-label {
+    -fx-text-fill: #374151;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+/* Botón ✕ para cerrar el modal */
+.btn-close {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 50;
+    -fx-text-fill: #64748b;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-max-width: 30;
+    -fx-max-height: 30;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+
+.btn-close:hover {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #dc2626;
+}
+
+/* Panel de info del arte encontrado (modal Eliminar) */
+.info-panel {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 14;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+}
+
+/* ══════════════════════════════════════════
+   MODALES — tamaño fijo y centrado real
+══════════════════════════════════════════ */
+.modal-panel {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 18;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.45), 36, 0.3, 0, 12);
+    -fx-pref-width: 420;
+    -fx-min-width: 420;
+    -fx-max-width: 420;
+    -fx-pref-height: 340;
+}
+
+.modal-panel-wide {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 18;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.45), 36, 0.3, 0, 12);
+    -fx-pref-width: 440;
+    -fx-min-width: 440;
+    -fx-max-width: 440;
+    -fx-pref-height: 360;
+}
+
+/* Centra el modal activo dentro del backdrop */
+.modal-backdrop {
+    -fx-background-color: rgba(10, 15, 30, 0.65);
+    -fx-alignment: CENTER;
+}
+
+/* ══════════════════════════════════════════
+   CARDS DE LA GALERÍA
+══════════════════════════════════════════ */
+.gallery-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.10), 12, 0.18, 0, 3);
+    -fx-pref-width: 190;
+    -fx-pref-height: 220;
+    -fx-min-width: 190;
+    -fx-min-height: 220;
+    -fx-max-width: 190;
+    -fx-max-height: 220;
+    -fx-cursor: hand;
+}
+
+.gallery-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.30), 18, 0.22, 0, 6);
+    -fx-border-color: #2563eb;
+}
+
+.card-image-container {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-pref-width: 160;
+    -fx-pref-height: 130;
+    -fx-min-width: 160;
+    -fx-min-height: 130;
+    -fx-max-width: 160;
+    -fx-max-height: 130;
+}
+
+.card-image {
+    -fx-fit-width: 160;
+    -fx-fit-height: 130;
+    -fx-preserve-ratio: true;
+    -fx-smooth: true;
+}
+
+.card-placeholder {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+    -fx-font-style: italic;
+}
+
+.card-name {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/26"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controller.GaleriaController">
+
+    <!-- ══════════════════════════════════════
+         VISTA PRINCIPAL ORIGINAL
+    ══════════════════════════════════════ -->
+    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
+                minHeight="-Infinity" minWidth="-Infinity"
+                prefHeight="700.0" prefWidth="1000.0"
+                styleClass="app-root" stylesheets="@styles.css">
+        <top>
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0"
+                  styleClass="top-bar" BorderPane.alignment="CENTER">
+                <children>
+                    <AnchorPane HBox.hgrow="ALWAYS" />
+                    <MenuButton fx:id="menuArte" alignment="CENTER"
+                                contentDisplay="CENTER" mnemonicParsing="false"
+                                prefWidth="100.0" styleClass="menu-button" text="Arte">
+                        <items>
+                            <MenuItem fx:id="itemAgregar"      onAction="#manejarAbrirAgregar"    text="Agregar" />
+                            <MenuItem fx:id="itemEliminar"     onAction="#manejarAbrirEliminar"   text="Eliminar" />
+                            <MenuItem fx:id="itemActualizar"   onAction="#manejarAbrirActualizar" text="Actualizar" />
+                            <MenuItem fx:id="itemCerrarSesion" onAction="#manejarCerrarSesion"    text="Cerrar sesion" />
+                        </items>
+                        <HBox.margin><Insets right="25.0" /></HBox.margin>
+                    </MenuButton>
+                </children>
+            </HBox>
+        </top>
+
+        <center>
+            <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                <padding><Insets bottom="30.0" top="30.0" /></padding>
+                <children>
+                    <Label styleClass="gallery-title" text="Galeria" />
+                    <ScrollPane fitToWidth="true" styleClass="gallery-scroll" VBox.vgrow="ALWAYS">
+                        <content>
+                            <TilePane fx:id="tileContenedorObras" alignment="TOP_CENTER"
+                                      hgap="30.0" prefTileHeight="200.0" prefTileWidth="250.0"
+                                      styleClass="gallery-grid" vgap="30.0">
+                                <padding><Insets left="40.0" right="40.0" top="10.0" /></padding>
+                            </TilePane>
+                        </content>
+                    </ScrollPane>
+                </children>
+            </VBox>
+        </center>
+    </BorderPane>
+
+    <!-- ══════════════════════════════════════
+         OVERLAY — backdrop oscuro
+         El clic fuera del modal lo cierra
+    ══════════════════════════════════════ -->
+    <StackPane fx:id="overlayBackdrop"
+               styleClass="modal-backdrop"
+               visible="false" managed="false"
+               onMouseClicked="#manejarCerrarModal">
+
+        <!-- ─── MODAL AGREGAR ─────────────── -->
+        <VBox fx:id="panelAgregar"
+              styleClass="modal-panel"
+              alignment="TOP_LEFT" spacing="14.0"
+              maxWidth="400.0" maxHeight="320.0"
+              visible="false" managed="false"
+              onMouseClicked="#consumirClick">
+            <padding><Insets bottom="28.0" left="32.0" right="32.0" top="24.0" /></padding>
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label styleClass="title-label" text="Agregar Arte" HBox.hgrow="ALWAYS" />
+                        <Button styleClass="btn-close" text="✕" onAction="#manejarCerrarModal" />
+                    </children>
+                </HBox>
+                <Label styleClass="field-label" text="Nombre del arte" />
+                <TextField fx:id="txtAgregarNombre" prefHeight="38.0"
+                           promptText="Ej. La noche estrellada" styleClass="field-input" />
+                <Label styleClass="field-label" text="URL de la imagen" />
+                <TextField fx:id="txtAgregarUrl" prefHeight="38.0"
+                           promptText="https://..." styleClass="field-input" />
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <VBox.margin><Insets top="6.0" /></VBox.margin>
+                    <children>
+                        <Button styleClass="secondary-button" text="Cancelar"
+                                prefHeight="38.0" prefWidth="110.0"
+                                onAction="#manejarCerrarModal" />
+                        <Button styleClass="primary-button" text="Guardar"
+                                prefHeight="38.0" prefWidth="110.0"
+                                onAction="#manejarGuardar" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- ─── MODAL ELIMINAR ────────────── -->
+        <VBox fx:id="panelEliminar"
+              styleClass="modal-panel"
+              alignment="TOP_LEFT" spacing="14.0"
+              maxWidth="440.0" maxHeight="420.0"
+              visible="false" managed="false"
+              onMouseClicked="#consumirClick">
+            <padding><Insets bottom="28.0" left="32.0" right="32.0" top="24.0" /></padding>
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label styleClass="title-label" text="Eliminar Arte" HBox.hgrow="ALWAYS" />
+                        <Button styleClass="btn-close" text="✕" onAction="#manejarCerrarModal" />
+                    </children>
+                </HBox>
+                <Label styleClass="field-label" text="Nombre del arte" />
+                <HBox spacing="8.0">
+                    <children>
+                        <TextField fx:id="txtEliminarNombre" prefHeight="38.0"
+                                   promptText="Buscar por nombre..."
+                                   styleClass="field-input" HBox.hgrow="ALWAYS" />
+                        <Button styleClass="secondary-button" text="Buscar"
+                                prefHeight="38.0" prefWidth="80.0"
+                                onAction="#manejarBuscarEliminar" />
+                    </children>
+                </HBox>
+                <VBox fx:id="panelEliminarInfo" styleClass="info-panel"
+                      spacing="8.0" visible="false" managed="false">
+                    <padding><Insets bottom="10.0" left="12.0" right="12.0" top="10.0" /></padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                            <children>
+                                <ImageView fx:id="imgEliminarPreview"
+                                           fitWidth="110.0" fitHeight="80.0"
+                                           preserveRatio="true" smooth="true" />
+                                <VBox spacing="4.0">
+                                    <children>
+                                        <Label fx:id="lblEliminarId"  styleClass="text-label" text="ID:" />
+                                        <Label fx:id="lblEliminarUrl" styleClass="text-label"
+                                               text="URL:" wrapText="true" maxWidth="220.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <VBox.margin><Insets top="4.0" /></VBox.margin>
+                    <children>
+                        <Button styleClass="secondary-button" text="Cancelar"
+                                prefHeight="38.0" prefWidth="110.0"
+                                onAction="#manejarCerrarModal" />
+                        <Button fx:id="btnEliminarConfirmar" styleClass="danger-button"
+                                text="Eliminar" prefHeight="38.0" prefWidth="110.0"
+                                disable="true" onAction="#manejarEliminarConfirmar" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- ─── MODAL ACTUALIZAR ──────────── -->
+        <VBox fx:id="panelActualizar"
+              styleClass="modal-panel"
+              alignment="TOP_LEFT" spacing="14.0"
+              maxWidth="400.0" maxHeight="340.0"
+              visible="false" managed="false"
+              onMouseClicked="#consumirClick">
+            <padding><Insets bottom="28.0" left="32.0" right="32.0" top="24.0" /></padding>
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label styleClass="title-label" text="Actualizar Arte" HBox.hgrow="ALWAYS" />
+                        <Button styleClass="btn-close" text="✕" onAction="#manejarCerrarModal" />
+                    </children>
+                </HBox>
+                <Label styleClass="field-label" text="Nombre del arte (para buscar)" />
+                <HBox spacing="8.0">
+                    <children>
+                        <TextField fx:id="txtActualizarNombre" prefHeight="38.0"
+                                   promptText="Nombre actual del arte..."
+                                   styleClass="field-input" HBox.hgrow="ALWAYS" />
+                        <Button styleClass="secondary-button" text="Buscar"
+                                prefHeight="38.0" prefWidth="80.0"
+                                onAction="#manejarBuscarActualizar" />
+                    </children>
+                </HBox>
+                <Label styleClass="field-label" text="Nueva URL de la imagen" />
+                <TextField fx:id="txtActualizarUrl" prefHeight="38.0"
+                           promptText="https://..." styleClass="field-input"
+                           disable="true" />
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <VBox.margin><Insets top="6.0" /></VBox.margin>
+                    <children>
+                        <Button styleClass="secondary-button" text="Cancelar"
+                                prefHeight="38.0" prefWidth="110.0"
+                                onAction="#manejarCerrarModal" />
+                        <Button fx:id="btnActualizarConfirmar" styleClass="primary-button"
+                                text="Actualizar" prefHeight="38.0" prefWidth="110.0"
+                                disable="true" onAction="#manejarActualizarConfirmar" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+    </StackPane>
+</StackPane>

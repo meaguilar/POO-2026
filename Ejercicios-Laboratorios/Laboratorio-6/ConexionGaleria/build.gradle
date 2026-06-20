@@ -23,10 +23,6 @@ application {
 dependencies {
     implementation 'org.postgresql:postgresql:42.7.3'
 
-    // Soporte WebP para JavaFX 21 (no viene nativo). TwelveMonkeys es puro Java
-    // y registra el decodificador en ImageIO, que es el que usa JavaFX por dentro.
-    implementation 'com.twelvemonkeys.imageio:imageio-webp:3.10.1'
-
     testImplementation platform('org.junit:junit-bom:6.0.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

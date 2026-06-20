@@ -19,7 +19,7 @@
 <StackPane xmlns="http://javafx.com/javafx/26"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="controller.GaleriaController"
-           stylesheets="@styles.css"
+           stylesheets="@css/styles.css"
            prefHeight="700.0" prefWidth="1000.0"
            minHeight="700.0" minWidth="1000.0"
            maxHeight="700.0" maxWidth="1000.0">

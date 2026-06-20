@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="app-root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      
+      <AnchorPane fx:id="paneImagen" prefHeight="200.0" prefWidth="200.0" styleClass="hero-pane" HBox.hgrow="ALWAYS" />
+      
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="25.0" styleClass="surface-card" HBox.hgrow="ALWAYS">
+         <padding>
+            <Insets bottom="40.0" left="50.0" right="50.0" top="40.0" />
+         </padding>
+         <children>
+            
+            <Label styleClass="title-label" text="Iniciar sesión" />
+            
+            <VBox alignment="CENTER" maxWidth="450.0">
+               <children>
+                  <TextField fx:id="txtCorreo" prefHeight="40.0" promptText="correo electronico" styleClass="field-input" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="btnIniciarSesion" onAction="#manejarIniciarSesion" prefHeight="40.0" prefWidth="150.0" styleClass="primary-button" text="Iniciar sesión" />
+                  <Button fx:id="btnCrearCuenta" onAction="#manejarCrearCuenta" prefHeight="40.0" prefWidth="150.0" styleClass="secondary-button" text="Crear cuenta" />
+               </children>
+            </HBox>
+            
+         </children>
+      </VBox>
+      
+   </children>
+</HBox>

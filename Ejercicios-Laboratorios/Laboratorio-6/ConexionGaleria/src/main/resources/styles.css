@@ -326,113 +326,66 @@
     -fx-text-fill: #dc2626;
 }
 
-/* Panel de info del arte encontrado (modal Eliminar) */
-.info-panel {
-    -fx-background-color: #f8fafc;
-    -fx-background-radius: 14;
-    -fx-border-color: #e2e8f0;
-    -fx-border-radius: 14;
-    -fx-border-width: 1;
-}
-
 /* ══════════════════════════════════════════
    MODAL PANELS — fondo sólido, tamaño fijo
 ══════════════════════════════════════════ */
 
+/* Fondo oscuro semitransparente detrás del modal */
+.modal-backdrop {
+    -fx-background-color: rgba(10, 15, 30, 0.60);
+}
 
-
+/* Tarjeta del modal — fondo BLANCO SÓLIDO, tamaño contenido */
 .modal-panel {
     -fx-background-color: #ffffff;
-    -fx-background-radius: 18;
-    -fx-border-color: #e2e8f0;
-    -fx-border-radius: 18;
+    -fx-background-radius: 16;
+    -fx-border-color: #dde3ed;
+    -fx-border-radius: 16;
     -fx-border-width: 1;
-    -fx-pref-width: 420;
-    -fx-max-width: 420;
-    -fx-effect: dropshadow(gaussian, rgba(10, 20, 50, 0.30), 32, 0.2, 0, 8);
+    -fx-effect: dropshadow(gaussian, rgba(10, 20, 50, 0.35), 36, 0.18, 0, 10);
 }
 
-.modal-panel-wide {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 18;
-    -fx-border-color: #e2e8f0;
-    -fx-border-radius: 18;
-    -fx-border-width: 1;
-    -fx-pref-width: 480;
-    -fx-max-width: 480;
-    -fx-effect: dropshadow(gaussian, rgba(10, 20, 50, 0.30), 32, 0.2, 0, 8);
+/* Título dentro del modal */
+.title-label {
+    -fx-text-fill: #102033;
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
 }
-/* Etiquetas de campo dentro del modal */
+
+/* Etiquetas de campo */
 .field-label {
     -fx-text-fill: #374151;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-font-weight: 600;
 }
 
-/* Botón ✕ para cerrar el modal */
+/* Botón X para cerrar */
 .btn-close {
     -fx-background-color: #f1f5f9;
     -fx-background-radius: 50;
     -fx-text-fill: #64748b;
     -fx-font-size: 13px;
     -fx-font-weight: 700;
-    -fx-min-width: 30;
-    -fx-min-height: 30;
-    -fx-max-width: 30;
-    -fx-max-height: 30;
+    -fx-min-width: 28;
+    -fx-min-height: 28;
+    -fx-max-width: 28;
+    -fx-max-height: 28;
     -fx-cursor: hand;
     -fx-padding: 0;
 }
-
 .btn-close:hover {
     -fx-background-color: #fee2e2;
     -fx-text-fill: #dc2626;
 }
 
-/* Panel de info del arte encontrado (modal Eliminar) */
+/* Panel de info (arte encontrado en Eliminar) */
 .info-panel {
     -fx-background-color: #f8fafc;
-    -fx-background-radius: 14;
+    -fx-background-radius: 10;
     -fx-border-color: #e2e8f0;
-    -fx-border-radius: 14;
+    -fx-border-radius: 10;
     -fx-border-width: 1;
 }
-
-/* ══════════════════════════════════════════
-   MODALES — tamaño fijo y centrado real
-══════════════════════════════════════════ */
-.modal-panel {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 18;
-    -fx-border-color: #cbd5e1;
-    -fx-border-radius: 18;
-    -fx-border-width: 1.5;
-    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.45), 36, 0.3, 0, 12);
-    -fx-pref-width: 420;
-    -fx-min-width: 420;
-    -fx-max-width: 420;
-    -fx-pref-height: 340;
-}
-
-.modal-panel-wide {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 18;
-    -fx-border-color: #cbd5e1;
-    -fx-border-radius: 18;
-    -fx-border-width: 1.5;
-    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.45), 36, 0.3, 0, 12);
-    -fx-pref-width: 440;
-    -fx-min-width: 440;
-    -fx-max-width: 440;
-    -fx-pref-height: 360;
-}
-
-/* Centra el modal activo dentro del backdrop */
-.modal-backdrop {
-    -fx-background-color: rgba(10, 15, 30, 0.65);
-    -fx-alignment: CENTER;
-}
-
 /* ══════════════════════════════════════════
    CARDS DE LA GALERÍA
 ══════════════════════════════════════════ */

@@ -15,22 +15,29 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
+
 <StackPane xmlns="http://javafx.com/javafx/26"
            xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="controller.GaleriaController">
+           fx:controller="controller.GaleriaController"
+           stylesheets="@styles.css"
+           prefHeight="700.0" prefWidth="1000.0"
+           minHeight="700.0" minWidth="1000.0"
+           maxHeight="700.0" maxWidth="1000.0">
 
-    <!-- ══════════════════════════════════════
-         VISTA PRINCIPAL ORIGINAL
-    ══════════════════════════════════════ -->
-    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
-                minHeight="-Infinity" minWidth="-Infinity"
-                prefHeight="700.0" prefWidth="1000.0"
-                styleClass="app-root" stylesheets="@styles.css">
+    <!-- ═══════════════════════════════════════════════════════
+         VISTA ORIGINAL — sin ningún cambio de estructura
+    ═══════════════════════════════════════════════════════ -->
+    <BorderPane prefHeight="700.0" prefWidth="1000.0"
+                minHeight="700.0" minWidth="1000.0"
+                maxHeight="700.0" maxWidth="1000.0"
+                styleClass="app-root">
+
         <top>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0"
                   styleClass="top-bar" BorderPane.alignment="CENTER">
                 <children>
                     <AnchorPane HBox.hgrow="ALWAYS" />
+
                     <MenuButton fx:id="menuArte" alignment="CENTER"
                                 contentDisplay="CENTER" mnemonicParsing="false"
                                 prefWidth="100.0" styleClass="menu-button" text="Arte">
@@ -40,7 +47,9 @@
                             <MenuItem fx:id="itemActualizar"   onAction="#manejarAbrirActualizar" text="Actualizar" />
                             <MenuItem fx:id="itemCerrarSesion" onAction="#manejarCerrarSesion"    text="Cerrar sesion" />
                         </items>
-                        <HBox.margin><Insets right="25.0" /></HBox.margin>
+                        <HBox.margin>
+                            <Insets right="25.0" />
+                        </HBox.margin>
                     </MenuButton>
                 </children>
             </HBox>
@@ -48,27 +57,37 @@
 
         <center>
             <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
-                <padding><Insets bottom="30.0" top="30.0" /></padding>
+                <padding>
+                    <Insets bottom="30.0" top="30.0" />
+                </padding>
                 <children>
+
                     <Label styleClass="gallery-title" text="Galeria" />
+
                     <ScrollPane fitToWidth="true" styleClass="gallery-scroll" VBox.vgrow="ALWAYS">
                         <content>
                             <TilePane fx:id="tileContenedorObras" alignment="TOP_CENTER"
-                                      hgap="30.0" prefTileHeight="200.0" prefTileWidth="250.0"
-                                      styleClass="gallery-grid" vgap="30.0">
-                                <padding><Insets left="40.0" right="40.0" top="10.0" /></padding>
+                                      hgap="20.0" prefColumns="4" prefRows="2"
+                                      prefTileHeight="220.0" prefTileWidth="190.0"
+                                      tileAlignment="CENTER"
+                                      styleClass="gallery-grid" vgap="20.0">
+                                <padding>
+                                    <Insets left="40.0" right="40.0" top="10.0" bottom="10.0" />
+                                </padding>
                             </TilePane>
                         </content>
                     </ScrollPane>
+
                 </children>
             </VBox>
         </center>
     </BorderPane>
 
-    <!-- ══════════════════════════════════════
-         OVERLAY — backdrop oscuro
-         El clic fuera del modal lo cierra
-    ══════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════════════════════
+         OVERLAY — backdrop oscuro + 3 modales
+         Invisible por defecto. Se activa desde GaleriaController.
+         Clic en el backdrop (fuera del modal) lo cierra.
+    ═══════════════════════════════════════════════════════ -->
     <StackPane fx:id="overlayBackdrop"
                styleClass="modal-backdrop"
                visible="false" managed="false"
